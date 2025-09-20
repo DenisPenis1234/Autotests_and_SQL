@@ -8,9 +8,6 @@ import configuration
 import data
 
 def test_getorder():
-    #получаем трек заказа
-    track = send_stand_requests.post_new_order(data.order_body)
-    #вызываем метод GET для получения заказа по его номеру
-    res = requests.get(configuration.URL_YASAMOKAT + configuration.END_GETODERBYTRACK + "?t=" + str(track))
-    #проверяем, что статус код равен 200
-    assert res.status_code == 200
+    res = send_stand_requests.get_order_by_track()
+    assert res == 200
+
