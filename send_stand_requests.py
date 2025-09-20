@@ -10,3 +10,9 @@ def post_new_order(body):
     #получаем значение трек-номера заказа
     return res.json()['track']
 
+def get_order_by_track():
+    #получаем трек заказа
+    track = post_new_order(data.order_body)
+    #вызываем метод GET для получения заказа по его номеру
+    res = requests.get(configuration.URL_YASAMOKAT + configuration.END_GETODERBYTRACK + "?t=" + str(track))
+    return res.status_code
